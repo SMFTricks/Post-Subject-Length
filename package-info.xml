@@ -16,7 +16,7 @@
 		<require-dir name="Sources" destination="$boarddir"/>
 		<require-dir name="Themes" destination="$boarddir"/>
 		<hook hook="integrate_pre_load" function="smftricks\PSL::hooks#" file="$sourcedir/Class-PSL.php"/>
-		<redirect url="?action=admin;area=modsettings;sa=p_s_l" timeout="3000"/>
+		<redirect url="?action=admin;area=postsettings" timeout="3000"/>
 	</install>
 	<uninstall for="2.1.*">
 		<hook hook="integrate_pre_load" function="smftricks\PSL::hooks#" file="$sourcedir/Class-PSL.php" reverse="true"/>
