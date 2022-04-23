@@ -9,7 +9,7 @@
  * @copyright 2022 smftricks
  * @license https://opensource.org/licenses/MPL-2.0 Mozilla Public License 2.0
  *
- * @version 0.1
+ * @version 1.1
  */
 
 /**
@@ -17,7 +17,27 @@
  */
 final class PSL
 {
-	public static function postEnd()
+	/**
+	 * integrate_post2_pre
+	 * 
+	 * Will add dummy data to use later on
+	 */
+	public static function post2Pre() : void
+	{
+		global $smcFunc;
+
+		if (!isset($_POST['subject']) || empty($_POST['subject']))
+			return;
+
+		$_POST['psl_subject'] = strtr($smcFunc['htmlspecialchars']($_POST['subject']), array("\r" => '', "\n" => '', "\t" => ''));
+	}
+
+	/**
+	 * integrate_post_end
+	 * 
+	 * Will change the size of the input
+	 */
+	public static function postEnd() : void
 	{
 		global $modSettings, $smcFunc, $topic, $context;
 
@@ -29,11 +49,49 @@ final class PSL
 		$context['posting_fields']['subject']['input']['attributes']['maxlength'] = $modSettings['p_s_l_psl_subject_length'] + (!empty($topic) ? $smcFunc['strlen']($context['response_prefix']) : 0);
 	}
 
-	public static function modifyPostSettings(&$config_vars)
+	/**
+	 * integrate_modify_post_settings
+	 * 
+	 * Adds mod settings
+	 */
+	public static function modifyPostSettings(&$config_vars) : void
 	{
 		global $txt;
 
 		loadLanguage('PSL');
 		$config_vars[] = array('int', 'p_s_l_psl_subject_length', 'subtext' => $txt['p_s_l_psl_subject_length_desc']);
+	}
+
+	/**
+	 * integrate_modify_post
+	 * 
+	 * Set the new subject when modifying a post
+	 */
+	public static function modifyPost(&$messages_columns, &$update_parameters, &$msgOptions) : void
+	{
+		if (!isset($_POST['psl_subject']) || empty($_POST['psl_subject']))
+			return;
+
+		$msgOptions['subject'] = $_POST['psl_subject'];
+		$messages_columns['subject'] = $_POST['psl_subject'];
+		unset($_POST['psl_subject']);
+	}
+
+	/**
+	 * integrate_create_post
+	 * 
+	 * Set the new subject when creating a post
+	 */
+	public static function createPost(&$msgOptions, &$topicOptions, &$posterOptions, &$message_columns, &$message_parameters) : void
+	{
+		if (!isset($_POST['psl_subject']) || empty($_POST['psl_subject']))
+			return;
+
+		foreach ($message_parameters as &$param)
+			if ($param === $msgOptions['subject'])
+				$param = $_POST['psl_subject'];
+
+		$msgOptions['subject'] = $_POST['psl_subject'];
+		unset($_POST['psl_subject']);
 	}
 }
