@@ -4,7 +4,7 @@
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>smftricks:PSL</id>
 	<name>Post Subject Length</name>
-	<version>0.2</version>
+	<version>1.1</version>
 	<type>modification</type>
 	<install for="2.1.*">
 		<readme lang="english" parsebbc="true" type="file">readme/readme.english.txt</readme>
@@ -16,12 +16,18 @@
 		<require-dir name="Sources" destination="$boarddir"/>
 		<require-dir name="Themes" destination="$boarddir"/>
 		<hook hook="integrate_post_end" function="PSL::postEnd" file="$sourcedir/Class-PSL.php"/>
+		<hook hook="integrate_post2_pre" function="PSL::post2Pre" file="$sourcedir/Class-PSL.php"/>
 		<hook hook="integrate_modify_post_settings" function="PSL::modifyPostSettings" file="$sourcedir/Class-PSL.php"/>
+		<hook hook="integrate_modify_post" function="PSL::modifyPost" file="$sourcedir/Class-PSL.php"/>
+		<hook hook="integrate_create_post" function="PSL::createPost" file="$sourcedir/Class-PSL.php"/>
 		<redirect url="?action=admin;area=postsettings" timeout="3000"/>
 	</install>
 	<uninstall for="2.1.*">
 		<hook hook="integrate_post_end" function="PSL::postEnd" file="$sourcedir/Class-PSL.php" reverse="true"/>
+		<hook hook="integrate_post2_pre" function="PSL::post2Pre" file="$sourcedir/Class-PSL.php" reverse="true"/>
 		<hook hook="integrate_modify_post_settings" function="PSL::modifyPostSettings" file="$sourcedir/Class-PSL.php" reverse="true"/>
+		<hook hook="integrate_modify_post" function="PSL::modifyPost" file="$sourcedir/Class-PSL.php" reverse="true"/>
+		<hook hook="integrate_create_post" function="PSL::createPost" file="$sourcedir/Class-PSL.php" reverse="true"/>
 		<remove-file name="$sourcedir/Class-PSL.php"/>
 		<remove-file name="$languagedir/PSL.english.php"/>
 	</uninstall>
