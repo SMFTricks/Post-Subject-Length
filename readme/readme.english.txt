@@ -11,4 +11,5 @@
 [size=1em]Post Subject Length lets you adjust the length of the posts subject when posting.[/size]
 [hr]
 
-[size=3][url="https://github.com/Post-Subject-Length"][color=#5e2b82]GitHub[/color][/url][/size]
+[size=3][url="https://github.com/SMFTricks/Post-Subject-Length/blob/main/CHANGELOG.md"][color=#cc5d31]Changelog[/color][/url][/size]
+[size=3][url="https://github.com/SMFTricks/Post-Subject-Length"][color=#5e2b82]GitHub[/color][/url][/size]
