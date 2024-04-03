@@ -1,5 +1,8 @@
 # Changelog
 
+#### 1.1.1 - 02 April 2024
+- ![Bug Fix](https://smftricks.com/assets/changelog/bug--minus.png) Fixed issue when editing posts.
+
 #### 1.1 - 23 April 2022
 - ![Bug Fix](https://smftricks.com/assets/changelog/bug--minus.png) Fixed issues on PHP 7.4.
 ---

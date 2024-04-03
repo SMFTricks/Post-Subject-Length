@@ -8,6 +8,11 @@
 ## Introduction
 Post Subject Length lets you adjust the length of the posts subject when posting.
 
+### Localization
+- ![English](https://www.simplemachines.org/site_images/lang/english.gif) English
+
+#### * Note about emails
+- Most email providers only allow up to 100 characters length in the subject, so please be aware of this issue. SMF does not currently truncate back the post suject before sending notifications.
 ---
 ### [Changelog](https://github.com/SMFTricks/Post-Subject-Length/blob/main/CHANGELOG.md)
 ### [GitHub](https://github.com/SMFTricks/Post-Subject-Length)

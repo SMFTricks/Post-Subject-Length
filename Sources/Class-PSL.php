@@ -73,7 +73,7 @@ final class PSL
 			return;
 
 		$msgOptions['subject'] = $_POST['psl_subject'];
-		$messages_columns['subject'] = $_POST['psl_subject'];
+		$update_parameters['var_subject'] = $_POST['psl_subject'];
 		unset($_POST['psl_subject']);
 	}
 
@@ -87,9 +87,10 @@ final class PSL
 		if (!isset($_POST['psl_subject']) || empty($_POST['psl_subject']))
 			return;
 
-		foreach ($message_parameters as &$param)
+		foreach ($message_parameters as &$param) {
 			if ($param === $msgOptions['subject'])
 				$param = $_POST['psl_subject'];
+		}
 
 		$msgOptions['subject'] = $_POST['psl_subject'];
 		unset($_POST['psl_subject']);
