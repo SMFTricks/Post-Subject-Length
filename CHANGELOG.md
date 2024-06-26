@@ -1,5 +1,8 @@
 # Changelog
 
+#### 1.1.2 - 25 June 2024
+- ![Translation](https://smftricks.com/assets/changelog/language.png) Ukrainian translation provided by [Xvost](https://www.simplemachines.org/community/index.php?action=profile;u=667165)
+
 #### 1.1.1 - 02 April 2024
 - ![Bug Fix](https://smftricks.com/assets/changelog/bug--minus.png) Fixed issue when editing posts.
 
